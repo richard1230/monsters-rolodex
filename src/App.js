@@ -24,35 +24,31 @@ class App extends React.Component {
 
   }
 
+  onSearchChange = (e) => {
+    const searchField = e.target.value.toLowerCase();
+    this.setState(
+      // () => { 
+      // return {searchField }
+      // }
+      //two methods are equal
+      { searchField: searchField }
+    )
+  }
 
   render() {
-    console.log("render: " + 2)
-    const filterMonsters = this.state.monsters.filter(
-      (monster) => monster.name.toLowerCase().includes(this.state.searchField)
+    const { monsters, searchField } = this.state;
+    const { onSearchChange } = this;
+    const filterMonsters = monsters.filter(
+      (monster) => monster.name.toLowerCase().includes(searchField)
       //注意:filter也是返回对象,这里的逻辑是筛选出输入框中外部输出的包含字符串的name
     )
-
-    console.log("filterMonsters:===》" + filterMonsters)
-
     return (
       <div className="App">
         <input
           className='search-box'
           type='search'
           placeholder='search monsters'
-          onChange={
-            (e) => {
-
-              const searchField = e.target.value.toLowerCase();
-              this.setState(
-                // () => { 
-                // return {searchField }
-                // }
-                //two methods are equal
-                { searchField: searchField }
-              )
-            }
-          }
+          onChange={onSearchChange}
         />
         {
           filterMonsters.map((monster) => {
