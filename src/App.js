@@ -19,12 +19,9 @@ class App extends React.Component {
       'https://jsonplaceholder.typicode.com/users'
     ).then((response) => response.json())
       .then(users => this.setState(
-        () => {
-          return { monsters: users }
-        }
+        { monsters: users.filter(item => item.id !== 10) }
       )
       )
-
   }
 
   onSearchChange = (e) => {
@@ -39,7 +36,7 @@ class App extends React.Component {
   }
 
   render() {
-    console.log("render from app")
+
     const { monsters, searchField } = this.state;
     const { onSearchChange } = this;
     const filterMonsters = monsters.filter(
