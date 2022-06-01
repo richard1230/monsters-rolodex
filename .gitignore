@@ -29,5 +29,6 @@ close8080port.sh
 /doc/
 
 close3000.sh
+deploy.sh
 
 note.md  

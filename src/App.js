@@ -27,7 +27,6 @@ const App = () => {
         //注意:filter也是返回对象,这里的逻辑是筛选出输入框中外部输出的包含字符串的name
       });
     setFilteredMonsters(newFilteredMonsters)//这里会导致filteredMonsters发生变化
-
   }, [monsters, searchField])
 
 
